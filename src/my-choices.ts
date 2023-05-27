@@ -1,5 +1,5 @@
 import { LitElement, css, html } from "lit"
-import { customElement } from "lit/decorators.js"
+import { customElement, property } from "lit/decorators.js"
 
 /**
  * An example element.
@@ -9,11 +9,15 @@ import { customElement } from "lit/decorators.js"
  */
 @customElement("my-choices")
 export class MyChoices extends LitElement {
+  @property()
+  choices: string[] = []
+
   render() {
     return html`
       <ul class="list">
-        <li class="item">item1</li>
-        <li class="item">item2</li>
+        ${this.choices.map(
+          (choice) => html` <li class="item normal">${choice}</li> `
+        )}
       </ul>
     `
   }
