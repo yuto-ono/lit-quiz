@@ -1,7 +1,5 @@
-import { LitElement, css, html } from 'lit'
-import { customElement, property } from 'lit/decorators.js'
-import litLogo from './assets/lit.svg'
-import viteLogo from '/vite.svg'
+import { LitElement, css, html } from "lit"
+import { customElement, property } from "lit/decorators.js"
 
 /**
  * An example element.
@@ -9,13 +7,13 @@ import viteLogo from '/vite.svg'
  * @slot - This element has a slot
  * @csspart button - The button
  */
-@customElement('my-element')
+@customElement("my-element")
 export class MyElement extends LitElement {
   /**
    * Copy for the read the docs hint.
    */
   @property()
-  docsHint = 'Click on the Vite and Lit logos to learn more'
+  docsHint = "Click on the Vite and Lit logos to learn more"
 
   /**
    * The number of times the button has been clicked.
@@ -25,103 +23,42 @@ export class MyElement extends LitElement {
 
   render() {
     return html`
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src=${viteLogo} class="logo" alt="Vite logo" />
-        </a>
-        <a href="https://lit.dev" target="_blank">
-          <img src=${litLogo} class="logo lit" alt="Lit logo" />
-        </a>
-      </div>
-      <slot></slot>
-      <div class="card">
-        <button @click=${this._onClick} part="button">
-          count is ${this.count}
-        </button>
-      </div>
-      <p class="read-the-docs">${this.docsHint}</p>
+      <main class="container">
+        <h1 class="title">Lit Quiz</h1>
+        <h2 class="heading">問題</h2>
+        <p class="question">{questionText}</p>
+      </main>
     `
   }
 
-  private _onClick() {
-    this.count++
-  }
-
   static styles = css`
-    :host {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 2rem;
-      text-align: center;
+    .title {
+      margin-bottom: 24px;
+      font-size: 24px;
+      font-weight: bold;
     }
-
-    .logo {
-      height: 6em;
-      padding: 1.5em;
-      will-change: filter;
-      transition: filter 300ms;
+    .container {
+      width: min(600px, 85%);
+      margin: 16px auto;
+      background-color: #fff;
+      border-radius: 4px;
+      padding: 16px;
+      position: relative;
     }
-    .logo:hover {
-      filter: drop-shadow(0 0 2em #646cffaa);
+    .heading {
+      margin-bottom: 18px;
+      font-size: 18px;
+      font-weight: bold;
     }
-    .logo.lit:hover {
-      filter: drop-shadow(0 0 2em #325cffaa);
-    }
-
-    .card {
-      padding: 2em;
-    }
-
-    .read-the-docs {
-      color: #888;
-    }
-
-    ::slotted(h1) {
-      font-size: 3.2em;
-      line-height: 1.1;
-    }
-
-    a {
-      font-weight: 500;
-      color: #646cff;
-      text-decoration: inherit;
-    }
-    a:hover {
-      color: #535bf2;
-    }
-
-    button {
-      border-radius: 8px;
-      border: 1px solid transparent;
-      padding: 0.6em 1.2em;
-      font-size: 1em;
-      font-weight: 500;
-      font-family: inherit;
-      background-color: #1a1a1a;
-      cursor: pointer;
-      transition: border-color 0.25s;
-    }
-    button:hover {
-      border-color: #646cff;
-    }
-    button:focus,
-    button:focus-visible {
-      outline: 4px auto -webkit-focus-ring-color;
-    }
-
-    @media (prefers-color-scheme: light) {
-      a:hover {
-        color: #747bff;
-      }
-      button {
-        background-color: #f9f9f9;
-      }
+    .explanation {
+      margin-bottom: 16px;
+      font-size: 16px;
     }
   `
 }
 
 declare global {
   interface HTMLElementTagNameMap {
-    'my-element': MyElement
+    "my-element": MyElement
   }
 }
