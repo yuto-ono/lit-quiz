@@ -1,5 +1,6 @@
 import { LitElement, css, html } from "lit"
 import { customElement, property } from "lit/decorators.js"
+import "./my-choices"
 
 /**
  * An example element.
@@ -27,6 +28,7 @@ export class MyElement extends LitElement {
         <h1 class="title">Lit Quiz</h1>
         <h2 class="heading">問題</h2>
         <p class="question">{questionText}</p>
+        <my-choices></my-choices>
       </main>
     `
   }
