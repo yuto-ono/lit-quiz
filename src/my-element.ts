@@ -2,6 +2,7 @@ import { LitElement, css, html, nothing } from "lit"
 import { customElement, state } from "lit/decorators.js"
 import "./my-choices"
 import "./my-result"
+import "./my-button"
 
 const questionText =
   "以下のうち、 Web Components を活用するためのライブラリはどれでしょう？"
@@ -39,7 +40,7 @@ export class MyElement extends LitElement {
               ${this._isCorrect
                 ? html`<p class="explanation">${explanationText}</p>`
                 : nothing}
-              <button @click=${this._reset}>リトライ</button>
+              <my-button @click=${this._reset}>リトライ</my-button>
             `
           : nothing}
       </main>
