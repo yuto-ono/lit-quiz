@@ -9,7 +9,7 @@ const questionText =
 const choices = ["React", "SolidJS", "Svelte", "Lit"] as const
 const answer = "Lit" satisfies (typeof choices)[number]
 const explanationText =
-  "Litは、Googleが開発した Web Components ライブラリです。"
+  "Litは、Googleが開発した Web Components ライブラリです。このアプリケーションもLitで作られています。"
 
 @customElement("my-element")
 export class MyElement extends LitElement {
