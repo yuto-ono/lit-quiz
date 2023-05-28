@@ -1,28 +1,16 @@
 import { LitElement, css, html } from "lit"
-import { customElement, property } from "lit/decorators.js"
+import { customElement, property, state } from "lit/decorators.js"
 import "./my-choices"
 
 const choices = ["React", "SolidJS", "Svelte", "Lit"]
 
-/**
- * An example element.
- *
- * @slot - This element has a slot
- * @csspart button - The button
- */
 @customElement("my-element")
 export class MyElement extends LitElement {
-  /**
-   * Copy for the read the docs hint.
-   */
-  @property()
-  docsHint = "Click on the Vite and Lit logos to learn more"
+  @state()
+  private _yourAnswer = ""
 
-  /**
-   * The number of times the button has been clicked.
-   */
-  @property({ type: Number })
-  count = 0
+  @state()
+  private _judged = false
 
   render() {
     return html`
@@ -30,9 +18,21 @@ export class MyElement extends LitElement {
         <h1 class="title">Lit Quiz</h1>
         <h2 class="heading">問題</h2>
         <p class="question">{questionText}</p>
-        <my-choices .choices=${choices}></my-choices>
+        <my-choices
+          .choices=${choices}
+          .yourAnswer=${this._yourAnswer}
+          .judged=${this._judged}
+          @select=${this._onSelect}
+        ></my-choices>
       </main>
     `
+  }
+
+  private _onSelect(e: CustomEvent<{ choice: string }>) {
+    const { choice } = e.detail
+    this._yourAnswer = choice
+    this._judged = true
+    console.log({ choice }, "x")
   }
 
   static styles = css`
